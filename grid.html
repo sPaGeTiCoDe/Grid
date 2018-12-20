@@ -1,0 +1,100 @@
+
+<!-- Hier is een simpel voorbeeld van een grid, dat je kunt bewerken. -->
+
+<!-- Hieronder staat de HTML en even lager de CSS -->
+
+<!DOCTYPE html>
+<html>
+    <body>
+    <div class="parent">
+        <div class="header">Header</div>
+        <div class="menu">Menu</div>
+        <div class="main">Main</div>
+        <div class="right">Right</div>
+        <div class="footer">Footer</div>
+    </div>
+    </body>
+</html>
+
+<!-- Hieronder de CSS -->
+
+<!-- Note:
+    Het is beter voor je pagina om '%' 'em' & 'vh (viewhight) en wv (viewwidth)' te gebruiken voor afstanden. (maakt je pagina scalable)
+
+    Voor grid kan je je scherm verdelen zowel in de hoogte als in de breedte.
+
+    Je kunt bijvoorbeeld:
+    grid-template-column: 1fr 1fr 1fr; (breedte)
+
+    Dit werkt ook in de hoogte:
+    grid-template-row: 1fr 1fr 1fr; (hoogte)
+
+    Maar makkelijker is:
+    grid-template-column:repeat(3, 1fr)
+
+    Dit is hetzelfde als; 33%, 33%, 33%
+
+    Hieronder heb ik het beeld verdeeld in; 1fr 8fr 1fr
+    Dit staat gelijk aan; 10% 80% 10%
+
+    Dit is makkelijker aangezien je het scherm niet hoeft te verdelen in percentages. 
+    Ik heb het verdeeld in 3en omdat er 3 dingen zijn die ik horizontaal weer wil geven (menu, main, right)
+    wil je meer dingen weergeven, maak dan meer opdelingen: example 1fr 8fr 1fr 1fr
+    Je kunt ook gewoon pixels of percentages gebruiken in grid commands: example 5% 10% 80% 5% (Het totaal met procenten moet 100% zijn.)
+
+    het grid-template-areas (in de style) is gevuld met text in dezelfde hoogte en breedte als ik het scherm heb verdeeld (3x3)
+
+    Het is simpel. Verdeel je scherm en zet in grid-template-areas neer waar je wat wilt hebben. 
+    Wil je leegte hebben zet dan een . neer.
+
+    Experimenteer er maar mee en kopieer wat je wilt.
+
+    Extra info:
+    Je kunt in deze grid meer grids maken (voor wat vakjes met plaatjes bijv.), maar wil je alleen wat plaatjes en text erin zetten gebruik dan flexbox.
+
+  
+-->
+
+<style>
+html {
+    background-color: #353535;
+    height: 100%;
+}
+body {
+    height:100%;
+    /* Haalt de standaard 8px margin om je pagina weg */
+    /* margin:0 */
+}
+.parent {
+    height: 100%;
+    display:grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-rows: 2fr 10fr 1fr;
+    grid-column-gap: 1em;
+    grid-row-gap: 1em;
+    grid-template-areas:
+            'header header header'
+              'menu main right'
+                 '. footer .'
+}
+.parent > div {
+    border:1px solid goldenrod;
+    text-align: center;
+    color: white;
+}
+.header {
+    grid-area: header;
+}
+.menu {
+    grid-area: menu;
+}
+.main {
+    grid-area: main;
+}
+.right {
+    grid-area: right;
+}
+.footer {
+    grid-area: footer;
+}
+</style>
